@@ -1,10 +1,25 @@
 package nonlineardatastructures;
 
+import java.util.LinkedList;
+import java.util.Queue;
+
 public class Tree {
     public TreeNode root;
 
     public Tree(TreeNode root) {
         this.root = root;
+    }
+
+    public void breadthFirstTraversal() {
+        TreeNode current = root;
+        Queue<TreeNode> queue = new LinkedList<TreeNode>();
+        queue.add(current);
+
+        while (!queue.isEmpty()) {
+            System.out.print(current.data);
+            current = queue.poll();
+            queue.addAll(current.children);
+        }
     }
 
     public void depthFirstTraversal(TreeNode current) {
